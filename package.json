@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "npx nodemon src/index.ts --watch 'src/' -e ts",
     "compile": "npx tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d src/infrastructure/database/AppDataSource.ts",
+    "migrate": "typeorm-ts-node-commonjs migration:run -d src/infrastructure/database/AppDataSource.ts",
+    "revert": "typeorm-ts-node-commonjs migration:revert -d src/infrastructure/database/AppDataSource.ts",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/infrastructure/database/migrations/Migration -d src/infrastructure/database/AppDataSource.ts"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +22,10 @@
     "express": "^5.2.1",
     "helmet": "^8.1.0",
     "morgan": "^1.10.1",
+    "pg": "^8.20.0",
     "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28",
+    "typeorm-extension": "^3.9.0",
     "yup": "^1.7.1"
   },
   "devDependencies": {
@@ -32,6 +40,7 @@
     "typescript": "^6.0.2"
   },
   "imports": {
+    "#/": "./src/",
     "#di/*": "./src/di/*.ts",
     "#infrastructure/*": "./src/infrastructure/*.ts",
     "#presentation/*": "./src/presentation/*.ts",

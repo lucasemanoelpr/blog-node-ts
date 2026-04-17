@@ -3,7 +3,7 @@ import { tokens } from "#di/tokens";
 import { Request, Response } from 'express'
 import BaseController from "../../BaseController";
 import IController from "#shared/interfaces/IController";
-import type ICrudService from "#shared/interfaces/ICrudService";
+import type ICrudService from "#shared/interfaces/ICommonService";
 import Post from "#domain/timeline/entities/Post.entity";
 
 @injectable()

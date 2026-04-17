@@ -1,13 +1,13 @@
-export default class Post {
-    id: number;
-    title: string;
-    content: string;
-    
-    private static nextId = 1;
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-    constructor(title: string, content: string) {
-        this.id = Post.nextId++;
-        this.title = title;
-        this.content = content;
-    }
+@Entity()
+export default class Post {
+    @PrimaryGeneratedColumn('uuid')
+    id!: string;
+
+    @Column()
+    title!: string;
+    
+    @Column()
+    content!: string;
 }
