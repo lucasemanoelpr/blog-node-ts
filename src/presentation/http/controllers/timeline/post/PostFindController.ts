@@ -1,0 +1,22 @@
+import { inject, injectable } from "tsyringe";
+import { tokens } from "#di/tokens";
+import { Request, Response } from 'express'
+import BaseController from "../../BaseController";
+import IController from "#shared/interfaces/IController";
+import type ICommonService from "#shared/interfaces/ICommonService";
+import Post from "#domain/timeline/entities/Post.entity";
+
+@injectable()
+export default class PostFindController extends BaseController implements IController {
+    constructor(
+        @inject(tokens.PostService)
+        private postService: ICommonService<Post>
+    ) {
+        super();
+    }
+    
+    async handle(req: Request, res: Response): Promise<Response> {
+        const posts = await this.postService.find();
+        return this.success(res, 'Posts found successfully', posts);
+    }
+}

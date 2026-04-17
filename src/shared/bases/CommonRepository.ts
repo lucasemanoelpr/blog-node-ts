@@ -21,7 +21,9 @@ export default abstract class CommonRepository<T extends ObjectLiteral> implemen
     }
     
     public findOne(id: string | number): Promise<T | null> {
-        return this.repository.findOne({ where: { id } as any });
+        return this.repository.findOne({ 
+            where: { id: id as any } 
+        });
     }
     
     public create(entity: DeepPartial<T>): Promise<T> {
@@ -32,7 +34,8 @@ export default abstract class CommonRepository<T extends ObjectLiteral> implemen
         return this.repository.update(id, entity as any).then(() => this.findOne(id));
     }
     
-    public delete(id: string | number): Promise<boolean> {
-        return this.repository.delete(id).then(() => true);
+    public async delete(id: string | number): Promise<boolean> {
+        const result = await this.repository.delete(id);
+        return (result?.affected || 0) > 0;
     }
 }
