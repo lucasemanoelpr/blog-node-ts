@@ -17,6 +17,9 @@ export default class PostUpdateController extends BaseController implements ICon
     
     async handle(req: Request, res: Response): Promise<Response> {
         const post = await this.postService.update(req.params.id as string, req.body);
+        if (!post) {
+            return this.error(res, 'Post not found', 404);
+        }
         return this.success(res, 'Post updated successfully', post);
     }
 }

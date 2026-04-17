@@ -17,6 +17,9 @@ export default class PostFindOneController extends BaseController implements ICo
     
     async handle(req: Request, res: Response): Promise<Response> {
         const post = await this.postService.findOne(req.params.id as string);
+        if (!post) {
+            return this.error(res, 'Post not found', 404);
+        }
         return this.success(res, 'Post found successfully', post);
     }
 }

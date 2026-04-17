@@ -8,7 +8,7 @@ export default class BaseController {
   error(res: Response, details: string, status = 400) {
     return res.status(status).json({
       success: false,
-      error: 'It was not possible complete the requisition. There is an erro in core application.',
+      error: 'It was not possible complete the requisition.',
       details,
     })
   }
