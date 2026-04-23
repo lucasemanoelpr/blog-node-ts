@@ -15,6 +15,10 @@ import AuthenticationService from '#domain/authentication/services/Authenticatio
 import UserService from '#domain/user/services/UserService'
 import { CreateUserController } from '#presentation/http/controllers/user/CreateUserController'
 import { UserRoutes } from '#presentation/http/routes/UserRoutes'
+import TokenService from '#domain/authentication/services/TokenService'
+import { LoginController } from '#presentation/http/controllers/authentication/LoginController'
+import { AuthenticationRoutes } from '#presentation/http/routes/AuthenticationRoutes'
+import { Config } from '#config/Config'
 
 // Creates a new child container based on root container
 const childContainer = container.createChildContainer()
@@ -22,6 +26,7 @@ const childContainer = container.createChildContainer()
 // Generic
 childContainer.registerSingleton(tokens.App, App)
 childContainer.registerSingleton(tokens.Routes, Routes)
+childContainer.registerSingleton(tokens.Config, Config)
 
 // Timeline
 childContainer.registerSingleton(tokens.PostRepository, PostRepository)
@@ -36,6 +41,9 @@ childContainer.registerSingleton(tokens.PostRoutes, PostRoutes)
 // Authentication
 childContainer.registerSingleton(tokens.UserRepository, UserRepository)
 childContainer.registerSingleton(tokens.AuthenticationService, AuthenticationService)
+childContainer.registerSingleton(tokens.TokenService, TokenService)
+childContainer.registerSingleton(tokens.LoginController, LoginController)
+childContainer.registerSingleton(tokens.AuthenticationRoutes, AuthenticationRoutes)
 
 // User
 childContainer.registerSingleton(tokens.UserService, UserService)

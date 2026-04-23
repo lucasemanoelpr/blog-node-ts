@@ -10,7 +10,10 @@ export class Routes {
     private postRoutes: IBaseRoute,
 
     @inject(tokens.UserRoutes)
-    private userRoutes: IBaseRoute
+    private userRoutes: IBaseRoute,
+
+    @inject(tokens.AuthenticationRoutes)
+    private authenticationRoutes: IBaseRoute
   ) { }
 
   /**
@@ -19,7 +22,8 @@ export class Routes {
   public setupRouter() {
     const router = Router()
     router.use('/post', this.postRoutes.setup())  
-    router.use('/user', this.userRoutes.setup())  
+    router.use('/user', this.userRoutes.setup())
+    router.use('/auth', this.authenticationRoutes.setup())
 
     return router
   }

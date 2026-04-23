@@ -7,6 +7,9 @@ export const tokens = {
     // Authentication
     UserRepository: Symbol('UserRepository'),
     AuthenticationService: Symbol('AuthenticationService'),
+    TokenService: Symbol('TokenService'),
+    LoginController: Symbol('LoginController'),
+    AuthenticationRoutes: Symbol('AuthenticationRoutes'),
     
     // User
     UserService: Symbol('UserService'),
