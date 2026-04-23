@@ -1,13 +1,17 @@
-import { DeepPartial } from "typeorm";
+import { DeepPartial, ObjectLiteral } from "typeorm";
 import ICommonRepository from '#shared/interfaces/ICommonRepository';
 import ICommonService from '#shared/interfaces/ICommonService';
 
-export default abstract class CommonService<T> implements ICommonService<T> {
+export default abstract class CommonService<T extends ObjectLiteral> implements ICommonService<T> {
     
     constructor(protected repository: ICommonRepository<T>) {}
 
     public find(): Promise<T[]> {
         return this.repository.findAll();
+    }
+
+    public findOneBy(filter: Partial<T>): Promise<T | null> {
+        return this.repository.findOneBy(filter);
     }
     
     public findOne(id: string | number): Promise<T | null> {

@@ -10,6 +10,11 @@ import PostDeleteController from '#presentation/http/controllers/timeline/post/P
 import PostFindController from '#presentation/http/controllers/timeline/post/PostFindController'
 import PostFindOneController from '#presentation/http/controllers/timeline/post/PostFindOneController'
 import PostUpdateController from '#presentation/http/controllers/timeline/post/PostUpdateController'
+import UserRepository from '#domain/user/repositories/UserRepository'
+import AuthenticationService from '#domain/authentication/services/AuthenticationService'
+import UserService from '#domain/user/services/UserService'
+import { CreateUserController } from '#presentation/http/controllers/user/CreateUserController'
+import { UserRoutes } from '#presentation/http/routes/UserRoutes'
 
 // Creates a new child container based on root container
 const childContainer = container.createChildContainer()
@@ -27,5 +32,14 @@ childContainer.registerSingleton(tokens.PostFindController, PostFindController)
 childContainer.registerSingleton(tokens.PostFindOneController, PostFindOneController)
 childContainer.registerSingleton(tokens.PostUpdateController, PostUpdateController)
 childContainer.registerSingleton(tokens.PostRoutes, PostRoutes)
+
+// Authentication
+childContainer.registerSingleton(tokens.UserRepository, UserRepository)
+childContainer.registerSingleton(tokens.AuthenticationService, AuthenticationService)
+
+// User
+childContainer.registerSingleton(tokens.UserService, UserService)
+childContainer.registerSingleton(tokens.CreateUserController, CreateUserController)
+childContainer.registerSingleton(tokens.UserRoutes, UserRoutes)
 
 export { childContainer as container }

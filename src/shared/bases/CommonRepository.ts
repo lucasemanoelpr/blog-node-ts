@@ -12,7 +12,7 @@ export default abstract class CommonRepository<T extends ObjectLiteral> implemen
         this.repository = AppDataSource.getRepository(this.entity)
     }
     
-    protected getRepository(): Repository<T> {
+    getRepository(): Repository<T> {
         return this.repository;
     }
 
@@ -23,6 +23,12 @@ export default abstract class CommonRepository<T extends ObjectLiteral> implemen
     public findOne(id: string | number): Promise<T | null> {
         return this.repository.findOne({ 
             where: { id: id as any } 
+        });
+    }
+
+    public findOneBy(filter: Partial<T>): Promise<T | null> {
+        return this.repository.findOne({ 
+            where: filter 
         });
     }
     
