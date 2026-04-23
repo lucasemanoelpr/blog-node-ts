@@ -24,7 +24,7 @@ export default class AuthenticationMiddleware implements IMiddleware {
     if (!token) {
       return res.status(403).json({
         success: false,
-        error: 'Um token é necessário para autenticação.',
+        error: 'A token is required for authentication.',
       })
     }
     try {
@@ -33,7 +33,7 @@ export default class AuthenticationMiddleware implements IMiddleware {
     } catch (err) {
       return res.status(401).json({
         success: false,
-        error: 'Token Inválido.',
+        error: 'Invalid Token.',
       })
     }
     return next()

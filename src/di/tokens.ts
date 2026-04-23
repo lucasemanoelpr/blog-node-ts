@@ -10,6 +10,7 @@ export const tokens = {
     TokenService: Symbol('TokenService'),
     LoginController: Symbol('LoginController'),
     AuthenticationRoutes: Symbol('AuthenticationRoutes'),
+    AuthenticationMiddleware: Symbol('AuthenticationMiddleware'),
     
     // User
     UserService: Symbol('UserService'),
