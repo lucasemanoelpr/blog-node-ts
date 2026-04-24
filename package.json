@@ -11,7 +11,8 @@
     "seed": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js seed -d src/infrastructure/database/AppDataSource.ts",
     "migrate": "typeorm-ts-node-commonjs migration:run -d src/infrastructure/database/AppDataSource.ts",
     "revert": "typeorm-ts-node-commonjs migration:revert -d src/infrastructure/database/AppDataSource.ts",
-    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/infrastructure/database/migrations/Migration -d src/infrastructure/database/AppDataSource.ts"
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/infrastructure/database/migrations/Migration -d src/infrastructure/database/AppDataSource.ts",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -38,9 +39,11 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.6.0",
+    "@types/supertest": "^7.2.0",
     "@types/yup": "^0.32.0",
     "jest": "^30.3.0",
     "nodemon": "^3.1.14",
+    "supertest": "^7.2.2",
     "ts-jest": "^29.4.9",
     "ts-node": "^10.9.2",
     "tsyringe": "^4.10.0",

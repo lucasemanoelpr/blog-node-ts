@@ -22,6 +22,7 @@ export class CreateUserController
         name: req.body.name,
         email: String(req.body.email),
         password: req.body.password,
+        password_confirmation: req.body.password_confirmation
       }
 
       const userExist = await this.userService.findOneBy({ email: userForm.email });

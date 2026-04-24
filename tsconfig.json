@@ -11,7 +11,7 @@
     "target": "esnext",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [],
+    "types": ["jest"],
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -45,5 +45,6 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "ts-node": { "transpileOnly": true }
+  "ts-node": { "transpileOnly": true },
+  "include": ["src/**/*.ts", "tests/**/*.test.ts"]
 }

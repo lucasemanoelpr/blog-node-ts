@@ -11,7 +11,7 @@ import { loginRequestSchema } from '../requestSchemas/authentication/LoginReques
 export class AuthenticationRoutes implements IBaseRoute {
   constructor(
     @inject(tokens.LoginController)
-    private loginController: IController
+    private loginController: IController,
 
     @inject(tokens.PasswordResetController)
     private passwordResetController: IController
