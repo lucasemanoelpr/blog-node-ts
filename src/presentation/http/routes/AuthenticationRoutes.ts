@@ -3,7 +3,7 @@ import { inject, injectable } from 'tsyringe'
 import type IController from '#shared/interfaces/IController'
 import { Request, Response, Router } from 'express'
 import { validateSchemaMiddleware } from '../middlewares/ValidateSchemaMidleware'
-// import { passwordResetRequestSchema } from '#presentation/http/requestSchemas/authentication/PasswordResetRequestSchema'
+import { passwordResetRequestSchema } from '#presentation/http/requestSchemas/authentication/PasswordResetRequestSchema'
 import IBaseRoute from '#shared/interfaces/IBaseRoute'
 import { loginRequestSchema } from '../requestSchemas/authentication/LoginRequestSchema'
 
@@ -13,8 +13,8 @@ export class AuthenticationRoutes implements IBaseRoute {
     @inject(tokens.LoginController)
     private loginController: IController
 
-    // @inject(tokens.PasswordResetController)
-    // private passwordResetController: IController
+    @inject(tokens.PasswordResetController)
+    private passwordResetController: IController
   ) {}
 
   setup() {
@@ -25,12 +25,12 @@ export class AuthenticationRoutes implements IBaseRoute {
       (req: Request, res: Response) => this.loginController.handle(req, res)
     )   
 
-    // router.post(
-    //   '/password-reset',
-    //   validateSchemaMiddleware(passwordResetRequestSchema),
-    //   (req: Request, res: Response) =>
-    //     this.passwordResetController.handle(req, res)
-    // )
+    router.post(
+      '/password-reset',
+      validateSchemaMiddleware(passwordResetRequestSchema),
+      (req: Request, res: Response) =>
+        this.passwordResetController.handle(req, res)
+    )
 
     return router
   }

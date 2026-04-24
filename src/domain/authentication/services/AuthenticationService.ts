@@ -48,4 +48,21 @@ export default class AuthenticationService extends CommonService<User> implement
 
     return user
   }
+
+  async passwordReset(email: string): Promise<boolean> {
+    const userFound = await this.userRepository.findOneBy({ email })
+
+    if (!userFound) {
+      throw new Error('User not found')
+    }
+
+    const token = email + '_USER_TOKEN_'
+    const hashedToken = await this.tokenService.generateHashedToken(token)
+    await this.userRepository.update(
+      userFound.id,
+      { token: hashedToken }
+    )
+
+    return true;
+  }
 }

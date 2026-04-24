@@ -11,6 +11,7 @@ export const tokens = {
     LoginController: Symbol('LoginController'),
     AuthenticationRoutes: Symbol('AuthenticationRoutes'),
     AuthenticationMiddleware: Symbol('AuthenticationMiddleware'),
+    PasswordResetController: Symbol('PasswordResetController'),
     
     // User
     UserService: Symbol('UserService'),

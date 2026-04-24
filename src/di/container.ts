@@ -20,6 +20,7 @@ import { LoginController } from '#presentation/http/controllers/authentication/L
 import { AuthenticationRoutes } from '#presentation/http/routes/AuthenticationRoutes'
 import { Config } from '#config/Config'
 import AuthenticationMiddleware from '#presentation/http/middlewares/AuthenticationMiddleware'
+import PasswordResetController from '#presentation/http/controllers/authentication/ResetPasswordController'
 
 // Creates a new child container based on root container
 const childContainer = container.createChildContainer()
@@ -46,6 +47,7 @@ childContainer.registerSingleton(tokens.TokenService, TokenService)
 childContainer.registerSingleton(tokens.LoginController, LoginController)
 childContainer.registerSingleton(tokens.AuthenticationRoutes, AuthenticationRoutes)
 childContainer.registerSingleton(tokens.AuthenticationMiddleware, AuthenticationMiddleware)
+childContainer.registerSingleton(tokens.PasswordResetController, PasswordResetController)
 
 // User
 childContainer.registerSingleton(tokens.UserService, UserService)

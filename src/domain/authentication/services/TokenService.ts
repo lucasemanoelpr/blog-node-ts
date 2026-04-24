@@ -4,6 +4,7 @@ import User from '#domain/user/entities/User.entity'
 import { tokens } from "#di/tokens";
 import type IConfiguration from "#shared/interfaces/IConfiguration";
 import type ITokenService from "#domain/authentication/interfaces/ITokenService";
+import bcryptjs from 'bcryptjs'
 
 @injectable()
 export default class TokenService implements ITokenService {
@@ -32,5 +33,10 @@ export default class TokenService implements ITokenService {
         )
         
         return token
+    }
+
+    async generateHashedToken(token: string): Promise<string> {
+        const hashedToken = await bcryptjs.hash(token, 10)
+        return hashedToken
     }
 }
